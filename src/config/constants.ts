@@ -1,1 +1,1 @@
-export const repository = 'https://github.com/Dami-js/phonyjs-lite.git';
+export const repository = 'https://github.com/Dami-js/api-starter.git';

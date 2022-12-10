@@ -14,14 +14,20 @@ function createApp() {
         name: 'appName',
         validateAppName,
       },
+      {
+        type: 'list',
+        choices: ['yarn', 'npm'],
+        message: 'Choose your package manager: (yarn) ',
+        name: 'packageManager'
+      }
     ])
     .then((answers) => {
       // Use user feedback for... whatever!!
-      const { appName } = answers;
+      const { appName, packageManager } = answers;
       const cwd = process.cwd();
       const dir = path.join(cwd, `/${answers.appName}`);
       createAppFolder(dir);
-      cloneRepositoryIntoFolder(dir, appName);
+      cloneRepositoryIntoFolder(dir, appName, packageManager);
     })
     .catch((error) => {
       if (error.isTtyError) {
